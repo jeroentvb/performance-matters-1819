@@ -1,7 +1,7 @@
 {
   "name": "performance-matters-1819",
-  "version": "1.0.0",
-  "description": "In dit vak gaan we de eerder bij de OBA gemaakte client side web applicatie ombouwen naar een server side gerenderde applicatie. Verder gaan we een reeks van optimalisaties doorvoeren om de performance van de applicatie te verbeteren. Uiteindelijk zorgen we ervoor dat de applicatie offline beschikbaar.",
+  "version": "0.1.0",
+  "description": "Server side web app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -21,8 +21,11 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jeroentvb-helper": "github:jeroentvb/jeroentvb-helper",
+    "oba-api": "github:rijkvanzanten/node-oba-api"
   }
 }
