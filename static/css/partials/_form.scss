@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  * {
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    color: var(--color-secondary);
+    // text-align: center;
+  }
+
+  &__input {
+    font-size: 1rem;
+    padding: 1.5rem 2rem;
+    border: none;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    border: 2px solid var(--color-secondary);
+  }
+
+  &__submit {
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    &:hover {
+      background-color: var(--color-secondary);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./img/oba.ico">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/script.js" type="module"></script>
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Zoek een boek</h1>
+      <img src="./img/oba-logo.svg" class="logo" alt="oba-logo">
+    </header>
+
+    <main class="main main--home">
+      <form class="form form--search" action="/search" method="post">
+        <label for="book-title" class="form__label">Zoek een titel</label>
+        <input type="text" id="book-title" class="form__input" name="book-title" placeholder="Titel van een boek">
+        <input type="submit" id="search-book" name="search-book" class="form__submit button">
+      </form>
+    </main>
+
+<% include tail %>
