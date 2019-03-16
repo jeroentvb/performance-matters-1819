@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="./images/oba.ico">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./leaflet.css">
-    <script src="./js/script.js" type="module"></script>
-    <title>OBA - <%= data.search.titles['short-title'].$t %></title>
+<% include head %>
+
+<link rel="icon" href="../images/oba.ico">
+<link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../leaflet.css">
+    <script src="../js/script.js" type="module"></script>
+    <title>OBA - <%= data.details.titles['short-title'].$t %></title>
   </head>
+
   <body>
     <header>
       <h1>Zoek een boek</h1>
-      <img src="./images/oba-logo.svg" class="logo" alt="oba-logo">
+      <img src="../images/oba-logo.svg" class="logo" alt="oba-logo">
     </header>
 
     <main class="main main--availability">
-      <a href="/" class="button">Terug</a>
+      <a href="#" onclick="window.history.back()" class="button">Terug</a>
 
       <section class="section__book-info">
-        <img src="<%= data.search.coverimages.coverimage[1].$t %>" class="cover" alt="book cover">
+        <img src="<%= data.details.coverimages.coverimage[1].$t %>" class="cover" alt="book cover">
 
         <div class="book-info__container">
           <div class="row">
             <h3>Titel</h3>
-            <p><%= data.search.titles['short-title'].$t %></p>
+            <p><%= data.details.titles['short-title'].$t %></p>
           </div>
           <div class="row">
             <h3>Auteur</h3>
-            <p><%= data.search.authors ? data.search.authors['main-author'].$t : 'niet gevonden' %></p>
+            <p><%= data.details.authors ? data.details.authors['main-author'].$t : 'niet gevonden' %></p>
           </div>
           <div class="row">
             <h3>Genres</h3>
-            <p><%= data.search.subjects['topical-subject'].$t %></p>
+            <p><%= data.details.subjects['topical-subject'].$t %></p>
           </div>
         </div>
       </section>
-      <div id="map"></div>
+      <div id="map" data-frabl="<%= data.details.frabl.$t %>"></div>
     </main>
 
-    <script src="./js/leaflet.js"></script>
+    <script src="../js/leaflet.js"></script>
 
 <% include tail %>

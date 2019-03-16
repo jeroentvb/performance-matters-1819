@@ -15,6 +15,8 @@ app()
 
   .get('/', index)
   .post('/search', search)
+  .get('/detail/:id', detail)
+  .get('/markers/:id', markers)
 
   .use(notFound)
   .listen(3000, () => console.log('[server] listening on port 3000'))
@@ -40,19 +42,36 @@ async function search (req, res) {
       return
     }
 
-    const frabl = searchResults.aquabrowser.results.result[0].frabl.$t
+    // helper.exportToFile('search-results', searchResults)
+    // helper.exportToFile('availability', availability)
+    // helper.exportToFile('test', searchResults.aquabrowser.results.result)
+    console.log(searchResults.aquabrowser.results.result[0].titles)
+    res.render('search-results', {
+      data: searchResults.aquabrowser.results.result
+    })
+  } catch (err) {
+    console.error(err)
+    res.render('error', {
+      message: 'An error occurred'
+    })
+  }
+}
+
+async function detail (req, res) {
+  const frabl = req.params.id
+  try {
+    const details = JSON.parse(await client.get('details', {
+      frabl: frabl
+    }))
 
     const availability = JSON.parse(await client.get('availability', {
       frabl: frabl
     }))
 
-    // helper.exportToFile('search-results', searchResults)
-    // helper.exportToFile('availability', availability)
-
     res.render('book-details', {
       data: {
-        search: searchResults.aquabrowser.results.result[0],
-        availability: availability.aquabrowser
+        availability: availability.aquabrowser,
+        details: details.aquabrowser
       }
     })
   } catch (err) {
@@ -60,6 +79,21 @@ async function search (req, res) {
     res.render('error', {
       message: 'An error occurred'
     })
+  }
+}
+
+async function markers (req, res) {
+  const frabl = req.params.id
+
+  try {
+    const availability = JSON.parse(await client.get('availability', {
+      frabl: frabl
+    }))
+
+    res.json(availability.aquabrowser)
+  } catch (err) {
+    console.error(err)
+    res.json({ error: 'An error occurred' })
   }
 }
 

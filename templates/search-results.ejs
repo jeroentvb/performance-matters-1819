@@ -1,0 +1,44 @@
+<% include head %>
+
+<link rel="icon" href="./images/oba.ico">
+<link rel="stylesheet" href="./css/styles.min.css">
+  <link rel="stylesheet" href="./leaflet.css">
+  <!-- <script src="./js/script.js" type="module"></script> -->
+  <title>OBA - Zoekresultaten</title>
+</head>
+
+<body>
+  <header>
+    <h1>Zoekresultaten</h1>
+    <img src="./images/oba-logo.svg" class="logo" alt="oba-logo">
+  </header>
+
+  <main class="main">
+    <a href="/" class="button">Terug</a>
+
+    <% data.forEach(book => { %>
+      <section class="section__book-info">
+        <img src="<%= book.coverimages.coverimage[1].$t %>" class="cover" alt="book cover">
+
+        <div class="book-info__container">
+          <div class="row">
+            <h3>Titel</h3>
+            <p><%= book.titles['short-title'].$t %></p>
+          </div>
+          <div class="row">
+            <h3>Auteur</h3>
+            <p><%= book.authors ? book.authors['main-author'].$t : 'niet gevonden' %></p>
+          </div>
+          <div class="row">
+            <h3>Genres</h3>
+            <p><%= book.subjects ? book.subjects['topical-subject'].$t : 'niet gevonden' %></p>
+          </div>
+          <div class="row">
+            <a href="/detail/<%= book.frabl.$t %>" class="button">Details</a>
+          </div>
+        </div>
+      </section>
+    <% }) %>
+  </main>
+
+<% include tail %>
