@@ -18,7 +18,7 @@
 
     <% data.forEach(book => { %>
       <section class="section__book-info">
-        <img src="<%= book.coverimages.coverimage[1].$t %>" class="cover" alt="book cover">
+        <img src="<%= book.coverimages.coverimage ? book.coverimages.coverimage[1].$t : 'test' %>" class="cover" alt="book cover">
 
         <div class="book-info__container">
           <div class="row">

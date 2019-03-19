@@ -1,3 +1,4 @@
+const compression = require('compression')
 const app = require('express')
 const bodyParser = require('body-parser')
 const OBA = require('oba-api')
@@ -8,6 +9,12 @@ require('dotenv').config()
 app()
   .set('views', 'templates')
   .set('view engine', 'ejs')
+
+  .use((req, res, next) => {
+    res.setHeader('Cache-Control', 'max-age=' + 30 * 24 * 60 * 60)
+    next()
+  })
+  .use(compression())
   .use(app.static('static'))
   .use(bodyParser.urlencoded({
     extended: true
@@ -42,10 +49,12 @@ async function search (req, res) {
       return
     }
 
+    // console.log(searchResults.aquabrowser.results.result)
+
     // helper.exportToFile('search-results', searchResults)
     // helper.exportToFile('availability', availability)
     // helper.exportToFile('test', searchResults.aquabrowser.results.result)
-    console.log(searchResults.aquabrowser.results.result[0].titles)
+    helper.exportToFile('test', searchResults.aquabrowser.results.result[0].coverimages.coverimage)
     res.render('search-results', {
       data: searchResults.aquabrowser.results.result
     })
