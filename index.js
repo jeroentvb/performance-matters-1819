@@ -1,5 +1,6 @@
 const compression = require('compression')
 const app = require('express')
+const minifyHTML = require('express-minify-html')
 const bodyParser = require('body-parser')
 const OBA = require('oba-api')
 const helper = require('jeroentvb-helper')
@@ -15,6 +16,18 @@ app()
     next()
   })
   .use(compression())
+  .use(minifyHTML({
+    override: true,
+    exception_url: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+      minifyJS: true
+    }
+  }))
   .use(app.static('static'))
   .use(bodyParser.urlencoded({
     extended: true

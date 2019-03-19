@@ -26,6 +26,7 @@
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "express-minify-html": "^0.12.0",
     "jeroentvb-helper": "github:jeroentvb/jeroentvb-helper",
     "oba-api": "github:rijkvanzanten/node-oba-api"
   }
