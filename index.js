@@ -15,7 +15,6 @@ app()
     res.setHeader('Cache-Control', 'max-age=' + 30 * 24 * 60 * 60)
     next()
   })
-  .use(compression())
   .use(minifyHTML({
     override: true,
     exception_url: false,
@@ -28,6 +27,7 @@ app()
       minifyJS: true
     }
   }))
+  .use(compression())
   .use(app.static('static'))
   .use(bodyParser.urlencoded({
     extended: true
@@ -62,12 +62,8 @@ async function search (req, res) {
       return
     }
 
-    // console.log(searchResults.aquabrowser.results.result)
-
-    // helper.exportToFile('search-results', searchResults)
-    // helper.exportToFile('availability', availability)
-    // helper.exportToFile('test', searchResults.aquabrowser.results.result)
     helper.exportToFile('test', searchResults.aquabrowser.results.result[0].coverimages.coverimage)
+
     res.render('search-results', {
       data: searchResults.aquabrowser.results.result
     })
