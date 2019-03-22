@@ -71,6 +71,16 @@
   }
 }
 
+table {
+  border: none;
+  margin: 1rem 0;
+}
+
+.last-row {
+  margin-bottom: 1rem;
+  display: block;
+}
+
 @media (min-width: 600px) {
   .main {
     &--home {

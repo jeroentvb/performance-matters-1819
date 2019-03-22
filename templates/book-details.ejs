@@ -13,7 +13,7 @@
       <img src="../images/oba-logo.svg" class="logo" alt="oba-logo">
     </header>
 
-    <main class="main main--availability">
+    <main class="main">
       <a href="#" onclick="window.history.back()" class="button">Terug</a>
 
       <section class="section__book-info">
@@ -34,7 +34,36 @@
           </div>
         </div>
       </section>
+
       <div id="map" data-frabl="<%= data.details.frabl.$t %>"></div>
+
+      <section>
+        <table>
+          <% data.availability.locations.location.forEach(location => { %>
+            <tr>
+              <td>Naam</td>
+              <td><%= location.name %></td>
+            </tr>
+            <tr>
+              <td>Beschikbaar</td>
+              <td><%= location.available === 'true' ? 'Ja' : 'Nee' %></td>
+            </tr>
+            <tr class="last-row">
+              <% if (location.available === 'true') { %>
+                <td>Beschikbaar op de afdeling</td>
+                <td><% location.items.item[0].subloc %></td>
+              <% } else { %>
+                <td>Weer beschikbaar op</td>
+                <td><% location.items.item[0] ? location.items.item[0].returndate : 'Datum niet gevonden' %></td>
+              <% } %>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          <% }) %>
+        </table>
+      </section>
     </main>
 
     <script src="../js/leaflet.js"></script>
