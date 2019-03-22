@@ -3,3 +3,4 @@ node_modules/
 *-export.json
 .DS_Store
 *.css.map
+*.pdf
