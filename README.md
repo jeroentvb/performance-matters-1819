@@ -26,5 +26,6 @@ Na het aanzetten van caching duur het reloaden van de home page maar 560 - 610ms
 In totaal heb de volgende laad
 
 
-compress js & css voor het serveren
-bundle JS indien nodig
+compress js & css voor het serveren  
+bundle JS indien nodig  
+Check de audit nog even

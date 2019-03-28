@@ -1,2 +1,17 @@
+  <script type="text/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js'/*, { scope: '/' } */)
+        .then(registration => {
+          // registration worked
+          console.log('Registration succeeded. Scope is ' + registration.scope)
+
+          registration.update()
+        })
+        .catch(err => {
+          // registration failed
+          console.log('Registration failed with ' + err)
+        })
+    }
+  </script>
   </body>
 </html>
