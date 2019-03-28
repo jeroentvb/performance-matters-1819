@@ -40,7 +40,7 @@ app()
   .get('/offline', offline)
 
   .use(notFound)
-  .listen(3000, () => console.log('[server] listening on port 3000'))
+  .listen(process.env.PORT || 3000, () => console.log(`[server] listening on port ${process.env.PORT || 3000}`))
 
 const client = new OBA({
   public: process.env.PUBLIC_KEY
