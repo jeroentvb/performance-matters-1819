@@ -1,4 +1,6 @@
+const compression = require('compression')
 const app = require('express')
+const minifyHTML = require('express-minify-html')
 const bodyParser = require('body-parser')
 const OBA = require('oba-api')
 const helper = require('jeroentvb-helper')
@@ -8,6 +10,24 @@ require('dotenv').config()
 app()
   .set('views', 'templates')
   .set('view engine', 'ejs')
+
+  // .use((req, res, next) => {
+  //   res.setHeader('Cache-Control', 'max-age=' + 30 * 24 * 60 * 60)
+  //   next()
+  // })
+  .use(minifyHTML({
+    override: true,
+    exception_url: false,
+    htmlMinifier: {
+      removeComments: true,
+      collapseWhitespace: true,
+      collapseBooleanAttributes: true,
+      removeAttributeQuotes: true,
+      removeEmptyAttributes: true,
+      minifyJS: true
+    }
+  }))
+  // .use(compression())
   .use(app.static('static'))
   .use(bodyParser.urlencoded({
     extended: true
@@ -17,6 +37,7 @@ app()
   .post('/search', search)
   .get('/detail/:id', detail)
   .get('/markers/:id', markers)
+  .get('/offline', offline)
 
   .use(notFound)
   .listen(3000, () => console.log('[server] listening on port 3000'))
@@ -42,10 +63,8 @@ async function search (req, res) {
       return
     }
 
-    // helper.exportToFile('search-results', searchResults)
-    // helper.exportToFile('availability', availability)
-    // helper.exportToFile('test', searchResults.aquabrowser.results.result)
-    console.log(searchResults.aquabrowser.results.result[0].titles)
+    // helper.exportToFile('test', searchResults.aquabrowser.results.result[0].coverimages.coverimage)
+
     res.render('search-results', {
       data: searchResults.aquabrowser.results.result
     })
@@ -95,6 +114,10 @@ async function markers (req, res) {
     console.error(err)
     res.json({ error: 'An error occurred' })
   }
+}
+
+function offline (req, res) {
+  res.render('offline')
 }
 
 function notFound (req, res) {
