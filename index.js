@@ -27,7 +27,7 @@ app()
       minifyJS: true
     }
   }))
-  // .use(compression())
+  .use(compression())
   .use(app.static('static'))
   .use(bodyParser.urlencoded({
     extended: true

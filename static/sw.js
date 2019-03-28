@@ -6,7 +6,8 @@ const coreCache = [
   '/offline',
   '/',
   '/images/oba.ico',
-  '/images/oba-logo.svg'
+  '/images/oba-logo.svg',
+  '/manifest.json'
 ]
 
 self.addEventListener('install', e => {
