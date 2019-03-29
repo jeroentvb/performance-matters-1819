@@ -8,7 +8,7 @@ Voor de tests heb ik een gesimuleerde netwerksnelheid gebruikt van 200kb up/down
 Dit zijn de laadtijden voor het laden van alles. Dus ook na `DOMContentLoaded`.
 
 | Pagina | Zonder aanpassingen | HTML minification & compression | Caching header | serviceWorker | Totaal bespaarde laadtijd |
-| - - -
+| --- | --- | --- | --- | --- | --- |
 | Home | 917ms | 682ms | 562ms | 2s | +1s |
 | Resultaten | 20s | 19s | 2s | 3s | 17s |
 | Detail | 14s | 8s | 3s | 3s | 11s |
@@ -17,7 +17,7 @@ Dit zijn de laadtijden voor het laden van alles. Dus ook na `DOMContentLoaded`.
 Dit zijn de laadtijden tot `DOMContentLoaded`
 
 | Pagina | Zonder aanpassingen | HTML minification & compression | Caching header | serviceWorker | Totaal bespaarde laadtijd |
-| - - -
+| --- | --- | --- | --- | --- | --- |
 | Home | 314ms | 309ms | 309ms | 113ms | 201ms |
 | Resultaten | 3s | 1s | 1s | 653ms | 2.5s |
 | Detail | 9s | 5s | 2s | 175ms | 8.8s |
