@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build:js": "terser static/js/script.js -c -m -o static/js/script.min.js",
+    "build:js": "terser static/js/script.js -c -m -o static/js/script.min.js && terser static/sw.js -c -m -o static/sw.min.js",
     "build:css": "postcss static/css/styles.css > static/css/styles.min.css",
     "build": "npm run build:js && npm run build:css"
   },
