@@ -1,6 +1,8 @@
 # Performance matters
 > service-twerker.js
 
+[Demo](https://performance-matters-jeroentvb.herokuapp.com/)
+
 ## Testresultaten
 Voor de tests heb ik een gesimuleerde netwerksnelheid gebruikt van 200kb up/down.
 
@@ -99,3 +101,9 @@ if ('serviceWorker' in navigator) {
     })
 }
 ```
+
+## To do
+- [ ] Image lazyloading toevoegen
+- [ ] Image reflow voorkomen
+- [ ] Statische assets precompressen
+- [ ] Bundel JS voor de detail pagina
